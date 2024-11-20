@@ -1,24 +1,16 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
+        stage('Check Docker Version') {
             steps {
-                echo 'Step 1: Checking out source code...'
+                echo 'Step 1: Checking Docker version...'
+                sh 'docker version'
             }
         }
-        stage('Setup') {
+        stage('List Running Containers') {
             steps {
-                echo 'Step 2: Setting up environment...'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Step 3: Running tests...'
-            }
-        }
-        stage('Cleanup') {
-            steps {
-                echo 'Step 4: Cleaning up workspace...'
+                echo 'Step 2: Listing running Docker containers...'
+                sh 'docker ps'
             }
         }
     }
