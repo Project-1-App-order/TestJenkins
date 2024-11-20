@@ -1,29 +1,25 @@
 pipeline {
     agent any
-    
-    tools {
-        
-    }
-
     stages {
-        stage("install") {
+        stage('Checkout') {
             steps {
-                echo "install progress"
+                echo 'Step 1: Checking out source code...'
             }
         }
-        stage("build") {
+        stage('Setup') {
             steps {
-                echo "buil progress"
+                echo 'Step 2: Setting up environment...'
             }
         }
-    } 
-    
-    post {
-        success {
-            echo "SUCCESSFUL"
+        stage('Test') {
+            steps {
+                echo 'Step 3: Running tests...'
+            }
         }
-        failure {
-            echo "FAILED"
+        stage('Cleanup') {
+            steps {
+                echo 'Step 4: Cleaning up workspace...'
+            }
         }
     }
 }
